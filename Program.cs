@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            int[] bubbleExample1 = { 34, 12, 56, 78, 23 };
+            int[] bubbleExample2 = { 90, 54, 32, 29, 10 };
+
+            BubbleSort(bubbleExample1);
         }
 
         /// <summary>
@@ -13,8 +16,8 @@
         /// STEPS (for ascending order)
         /// 1. Compare consectuive elements    (34 -- 12) 56 78 23
         /// 2. After comparison, determin if swap is needed    (12 -- 34) 56 78 23
-        /// 3. Continue comparing the next set of elements    [12 (34 -- 56) 78 23] 
-        /// 4. Repeat steps 1 - 3 until sorted    [12 34 (56 -- 78) 23] ⇒ [12 34 56 (78 -- 23)] ⇒ [12 34 56 23 78]
+        /// 3. Continue comparing the next set of elements    [12 (34 -- 56) 78 23] ⇒ [12 34 (56 -- 78) 23] ⇒ [12 34 56 (78 -- 23)] ⇒ [12 34 56 23 78]
+        /// 4. Repeat steps 1 - 3 until sorted
         /// 
         /// TIME COMPLEXITY
         /// * BEST: O(n)  ;  Worst: O(n^2)  :  Average O(n^2);
@@ -49,7 +52,6 @@
                     }
                 }
             }
-
             void Swap(int num1, int num2)
             {
                 temp = num1;
@@ -77,6 +79,18 @@
         {
 
         }
+
+        #region Display Methods
+
+        static void DisplayArray(int[] arr)
+        {
+            foreach (int i in arr)
+            {
+                Console.Write(i + " | ");
+            }
+        }
+
+        #endregion Display Methods
 
     }
 }
