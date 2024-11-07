@@ -1,14 +1,17 @@
-﻿namespace SortingPractice
+﻿using static System.Console;
+
+namespace SortingPractice
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int[] ints1 = { 24, 3, 6, 10, 27, 32 };
-            int[] ints2 = { 32, 21, 17, 12, 3, 1 };
-            int[] ints3 = { 58, 6, 98, 25, 200, 101 };
+            int[] ints1 = { 34, 12, 56, 78, 23 };
+            int[] ints2 = { 90, 54, 32, 29, 10 };
+            int[] ints3 = { 100, 60, 40, 30, 2 };
+            int[] ints4 = { 78, 34, 10, 67, 54 };
 
-            InsertionSort(ints1);
+            
         }
 
         /// <summary>
@@ -17,8 +20,8 @@
         /// STEPS (for ascending order)
         /// 1. Compare consectuive elements    (34 -- 12) 56 78 23
         /// 2. After comparison, determin if swap is needed    (12 -- 34) 56 78 23
-        /// 3. Continue comparing the next set of elements    [12 (34 -- 56) 78 23] 
-        /// 4. Repeat steps 1 - 3 until sorted    [12 34 (56 -- 78) 23] ⇒ [12 34 56 (78 -- 23)] ⇒ [12 34 56 23 78]
+        /// 3. Continue comparing the next set of elements    [12 (34 -- 56) 78 23] ⇒ [12 34 (56 -- 78) 23] ⇒ [12 34 56 (78 -- 23)] ⇒ [12 34 56 23 78]
+        /// 4. Repeat steps 1 - 3 until sorted
         /// 
         /// TIME COMPLEXITY
         /// * BEST: O(n)  ;  Worst: O(n^2)  :  Average O(n^2);
@@ -53,18 +56,62 @@
                     }
                 }
             }
-
             void Swap(int num1, int num2)
             {
                 temp = num1;
                 num1 = num2;
                 num2 = temp;
             }
+
         }
 
+        /// <summary>
+        /// Insertion sort builds the sorted array one item at a time by inserting each element into its proper position
+        /// in an already sorted portion of the array
+        /// 
+        /// STEPS (for ascending order)
+        /// 1. Select one element from the left in the collection    (12) (34) 56 78 6
+        /// 2. Insert this element in proper location after comparison    (12) (34) 56 78 6 ⇒ minPos = 0
+        /// 3. After positions are interchanged, ensure all elements to the left are sorted    [(12) 34 78 56 (6)] ⇒ minPos = 4 ⇒ [6 34 56 23 12]
+        /// 4. Repeat steps 1 - 3 until sorted
+        /// 
+        /// TIME COMPLEXITY
+        /// * BEST: O(n)  ;  Worst: O(n^2)  :  Average O(n^2);
+        /// 
+        /// SPACE COMPLEXITY
+        /// * O(1)
+        /// 
+        /// BEST USE CASES
+        /// * Small data sets, simple applications, applications where stability is important
+        /// 
+        /// PROS
+        /// * Very efficient for small or nearly sorted data sets
+        /// * Stable - preserves relative order of equal elements
+        /// * Adaptive - can be optimized to stop early if the list is already sorted
+        /// 
+        /// CONS
+        /// * Slow on large data sets
+        /// * Slower than other algorithms such as Quick Sort or Merge Sort
+        /// 
+        /// </summary>
+        /// <param name="arr"></param>
         static void InsertionSort(int[] arr)
         {
+            int temp; 
+            int position = 0;
 
+            for (int i = 1; i < arr.Length; i++)
+            {
+                temp = arr[i]; //Variable we are trying to insert
+                position = i; //Starting position to check
+
+                while (position > 0 && arr[position - 1] > temp)
+                {
+                    arr[position] = arr[position - 1]; //Will keep going down until the next position is no longer greater than temp (number we are trying to insert)
+                    position--;
+                }
+                arr[position] = temp; //Once we find that spot, insert it.
+            }
         }
 
         static void QuickSort(int[] arr)
@@ -81,6 +128,33 @@
         {
 
         }
+
+        #region Display Methods
+        static void DisplayArray(int[] arr)
+        {
+            foreach (int i in arr)
+            {
+                Write(i + " ");
+            }
+            WriteLine("\n\n");
+        }
+        static void DisplayArray(int[] arr, int[] sortedArr)
+        {
+            Console.WriteLine("ARRAY: ");
+            foreach(int i in arr)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine("SORTED ARRAY: ");
+            foreach(int i in sortedArr) 
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine("\n\n")
+        }
+
+        #endregion Display Methods
 
         //Display Methods
         void DisplayArray(int[] arr)
