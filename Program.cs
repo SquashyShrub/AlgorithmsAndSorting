@@ -1,4 +1,6 @@
-﻿namespace SortingPractice
+﻿using static System.Console;
+
+namespace SortingPractice
 {
     internal class Program
     {
@@ -7,7 +9,10 @@
             int[] bubbleExample1 = { 34, 12, 56, 78, 23 };
             int[] bubbleExample2 = { 90, 54, 32, 29, 10 };
 
+            DisplayArray(bubbleExample1);
             BubbleSort(bubbleExample1);
+
+            
         }
 
         /// <summary>
@@ -58,6 +63,7 @@
                 num1 = num2;
                 num2 = temp;
             }
+
         }
 
         /// <summary>
@@ -125,13 +131,37 @@
         }
 
         #region Display Methods
-
         static void DisplayArray(int[] arr)
         {
             foreach (int i in arr)
             {
-                Console.Write(i + " | ");
+                Write(i + " | ");
             }
+            WriteLine();
+        }
+        static void DisplayArray(int[] arr, int colorNumIndex, int colorNumIndex2)
+        {
+            foreach (int i in arr)
+            {
+                if (arr[colorNumIndex] != i && arr[colorNumIndex2] != i + 1)
+                    Write(i + " ");
+                else
+                {
+                    if (i == arr[colorNumIndex])
+                    {
+                        ForegroundColor = ConsoleColor.Green;
+                        Write(i + " ");
+                        ResetColor();
+                    }
+                    if (i + 1 == arr[colorNumIndex2])
+                    {
+                        ForegroundColor = ConsoleColor.Yellow;
+                        Write(i + " ");
+                        ResetColor();
+                    }
+                }
+            }
+            WriteLine();
         }
 
         #endregion Display Methods
