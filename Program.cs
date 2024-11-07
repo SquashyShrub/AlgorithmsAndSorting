@@ -95,15 +95,15 @@
 
             for (int i = 1; i < arr.Length; i++)
             {
-                temp = arr[i];
-                position = i;
+                temp = arr[i]; //Variable we are trying to insert
+                position = i; //Starting position to check
 
                 while (position > 0 && arr[position - 1] > temp)
                 {
-                    arr[position] = arr[position - 1];
+                    arr[position] = arr[position - 1]; //Will keep going down until the next position is no longer greater than temp (number we are trying to insert)
                     position--;
                 }
-                arr[position] = temp;
+                arr[position] = temp; //Once we find that spot, insert it.
             }
         }
 
