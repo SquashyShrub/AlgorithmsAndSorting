@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            int[] ints1 = { 24, 3, 6, 10, 27, 32 };
+            int[] ints2 = { 32, 21, 17, 12, 3, 1 };
+            int[] ints3 = { 58, 6, 98, 25, 200, 101 };
+
+            InsertionSort(ints1);
         }
 
         /// <summary>
@@ -78,5 +82,28 @@
 
         }
 
+        //Display Methods
+        void DisplayArray(int[] arr)
+        {
+            foreach (int i in arr)
+            {
+                Console.Write(i + " | ");
+            }
+            Console.WriteLine("\n\n");
+        }
+        void DisplayArray(int[] arr, int[] sortedArr)
+        {
+            foreach (int i in arr)
+            {
+                Console.Write(i + " | ");
+            }
+            Console.WriteLine("\n");
+
+            foreach (int i in sortedArr)
+            {
+                Console.Write(i + " | ");
+            }
+            Console.WriteLine("\n\n");
+        }
     }
 }
