@@ -6,11 +6,10 @@ namespace SortingPractice
     {
         static void Main(string[] args)
         {
-            int[] bubbleExample1 = { 34, 12, 56, 78, 23 };
-            int[] bubbleExample2 = { 90, 54, 32, 29, 10 };
-
-            DisplayArray(bubbleExample1);
-            BubbleSort(bubbleExample1);
+            int[] ints1 = { 34, 12, 56, 78, 23 };
+            int[] ints2 = { 90, 54, 32, 29, 10 };
+            int[] ints3 = { 100, 60, 40, 30, 2 };
+            int[] ints4 = { 78, 34, 10, 67, 54 };
 
             
         }
@@ -135,33 +134,24 @@ namespace SortingPractice
         {
             foreach (int i in arr)
             {
-                Write(i + " | ");
+                Write(i + " ");
             }
-            WriteLine();
+            WriteLine("\n\n");
         }
-        static void DisplayArray(int[] arr, int colorNumIndex, int colorNumIndex2)
+        static void DisplayArray(int[] arr, int[] sortedArr)
         {
-            foreach (int i in arr)
+            Console.WriteLine("ARRAY: ");
+            foreach(int i in arr)
             {
-                if (arr[colorNumIndex] != i && arr[colorNumIndex2] != i + 1)
-                    Write(i + " ");
-                else
-                {
-                    if (i == arr[colorNumIndex])
-                    {
-                        ForegroundColor = ConsoleColor.Green;
-                        Write(i + " ");
-                        ResetColor();
-                    }
-                    if (i + 1 == arr[colorNumIndex2])
-                    {
-                        ForegroundColor = ConsoleColor.Yellow;
-                        Write(i + " ");
-                        ResetColor();
-                    }
-                }
+                Console.Write(i + " ");
             }
-            WriteLine();
+            Console.WriteLine("\n");
+            Console.WriteLine("SORTED ARRAY: ");
+            foreach(int i in sortedArr) 
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine("\n\n")
         }
 
         #endregion Display Methods
