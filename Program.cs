@@ -140,44 +140,21 @@ namespace SortingPractice
         }
         static void DisplayArray(int[] arr, int[] sortedArr)
         {
-            Console.WriteLine("ARRAY: ");
+            WriteLine("ARRAY: ");
             foreach(int i in arr)
             {
-                Console.Write(i + " ");
+                Write(i + " ");
             }
-            Console.WriteLine("\n");
-            Console.WriteLine("SORTED ARRAY: ");
+            WriteLine("\n");
+            WriteLine("SORTED ARRAY: ");
             foreach(int i in sortedArr) 
             {
-                Console.Write(i + " ");
+               Write(i + " ");
             }
-            Console.WriteLine("\n\n")
+            WriteLine("\n\n");
         }
 
         #endregion Display Methods
-
-        //Display Methods
-        void DisplayArray(int[] arr)
-        {
-            foreach (int i in arr)
-            {
-                Console.Write(i + " | ");
-            }
-            Console.WriteLine("\n\n");
-        }
-        void DisplayArray(int[] arr, int[] sortedArr)
-        {
-            foreach (int i in arr)
-            {
-                Console.Write(i + " | ");
-            }
-            Console.WriteLine("\n");
-
-            foreach (int i in sortedArr)
-            {
-                Console.Write(i + " | ");
-            }
-            Console.WriteLine("\n\n");
         }
     }
 }
