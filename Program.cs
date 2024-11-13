@@ -163,7 +163,7 @@ namespace SortingPractice
             }
             void Swap(int num1, int num2)
             {
-                temp = num1;
+                int temp = num1;
                 num1 = num2;
                 num2 = temp;
             }
@@ -211,28 +211,5 @@ namespace SortingPractice
 
         #endregion Display Methods
 
-        //Display Methods
-        void DisplayArray(int[] arr)
-        {
-            foreach (int i in arr)
-            {
-                Console.Write(i + " | ");
-            }
-            Console.WriteLine("\n\n");
-        }
-        void DisplayArray(int[] arr, int[] sortedArr)
-        {
-            foreach (int i in arr)
-            {
-                Console.Write(i + " | ");
-            }
-            Console.WriteLine("\n");
-
-            foreach (int i in sortedArr)
-            {
-                Console.Write(i + " | ");
-            }
-            Console.WriteLine("\n\n");
-        }
     }
 }
