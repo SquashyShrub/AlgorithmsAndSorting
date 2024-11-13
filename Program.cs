@@ -114,6 +114,61 @@ namespace SortingPractice
             }
         }
 
+        /// <summary>
+        /// Selection sort works by repeatedly finding the minimum element from the unsorted portion of the array
+        /// and swapping it with the first unsorted element
+        /// 
+        /// STEPS (for ascending order)
+        /// 1. Compare one element with the rest of the array    (12) (34) 56 78 6
+        /// 2. IAfter comparison, determine if a new minimum occurs   (12) (34) 56 78 6 ⇒ minPos = 0
+        /// 3. Continue comparing the next set of elements    [(12) 34 78 56 (6)] ⇒ minPos = 4 ⇒ [6 12 34 56 23]
+        /// 4. Repeat steps 1 - 3 until sorted
+        /// 
+        /// TIME COMPLEXITY
+        /// * BEST: O(n^2)  ;  Worst: O(n^2)  :  Average O(n^2);
+        /// 
+        /// SPACE COMPLEXITY
+        /// * O(1)
+        /// 
+        /// BEST USE CASES
+        /// * Small data sets, simple applications, memory usage is a concern
+        /// 
+        /// PROS
+        /// * Simple and easy to implement
+        /// * In-place sorting with O(1) space complexity
+        /// * Does not require additional memory
+        /// 
+        /// CONS
+        /// * Slow and inefficient on large data sets
+        /// * Not stable - can change the order of equal elements
+        /// 
+        /// </summary>
+        /// <param name="arr"></param>
+        static void SelectionSort(int[] arr)
+        {
+            int minPos = 0; //track the position(index) of the minimum element
+
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                minPos = i;
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[minPos])
+                        minPos = j;
+                }
+                if (minPos != i)
+                {
+                    Swap(arr[i], arr[j]);
+                }
+            }
+            void Swap(int num1, int num2)
+            {
+                temp = num1;
+                num1 = num2;
+                num2 = temp;
+            }
+        }
+        
         static void QuickSort(int[] arr)
         {
 
@@ -155,6 +210,29 @@ namespace SortingPractice
         }
 
         #endregion Display Methods
+
+        //Display Methods
+        void DisplayArray(int[] arr)
+        {
+            foreach (int i in arr)
+            {
+                Console.Write(i + " | ");
+            }
+            Console.WriteLine("\n\n");
+        }
+        void DisplayArray(int[] arr, int[] sortedArr)
+        {
+            foreach (int i in arr)
+            {
+                Console.Write(i + " | ");
+            }
+            Console.WriteLine("\n");
+
+            foreach (int i in sortedArr)
+            {
+                Console.Write(i + " | ");
+            }
+            Console.WriteLine("\n\n");
         }
     }
 }
