@@ -65,6 +65,7 @@ namespace SortingPractice
 
         }
 
+
         /// <summary>
         /// Insertion sort builds the sorted array one item at a time by inserting each element into its proper position
         /// in an already sorted portion of the array
@@ -114,6 +115,7 @@ namespace SortingPractice
             }
         }
 
+
         /// <summary>
         /// Selection sort works by repeatedly finding the minimum element from the unsorted portion of the array
         /// and swapping it with the first unsorted element
@@ -158,7 +160,7 @@ namespace SortingPractice
                 }
                 if (minPos != i)
                 {
-                    Swap(arr[i], arr[j]);
+                    Swap(arr[i], arr[i+1]);
                 }
             }
             void Swap(int num1, int num2)
@@ -168,12 +170,101 @@ namespace SortingPractice
                 num2 = temp;
             }
         }
-        
-        static void QuickSort(int[] arr)
-        {
 
+
+        /// <summary>
+        /// Quick sort is a divide-and-conquer algorithm that divides the array into subarrays based
+        /// on a pivot element, sortin geach subarray recursively
+        /// 
+        /// STEPS (for ascending order)
+        /// 1. Divide and conquer array into sub arrays
+        /// 2. Divide the collection into subsets/partitions
+        /// 3. Partition is done base on a pivot element
+        ///     - Pivot position or element in the pivot spot is a position such that the left side elements are lesser than
+        ///     and the right side elements are greater than the pivot
+        /// 4. Recursively sor thte subset using the quick sort
+        /// 
+        /// TIME COMPLEXITY
+        /// * BEST: O(n log n)  ;  Worst: O(n^2)  ;  Average O(n log n);
+        /// 
+        /// SPACE COMPLEXITY
+        /// * O(log n) (in place, recursive stack space)
+        /// 
+        /// BEST USE CASES
+        /// * Large data sets, general-purpose sorting, divide-and-conquer apps
+        /// 
+        /// PROS
+        /// * Very fast for large data sets (average O(n log n) time complexity
+        /// * In-place sorting uses less memory
+        /// * Often faster than merge sort and heap sort in practice, despite have same average time complexity
+        /// 
+        /// CONS
+        /// * Not stable (can change the relative order of equal elements)
+        /// * Worst case performance can be a O(n^2) - Good pivot selection helps prevent this
+        /// * Recursive implementation leads to stack overhead
+        /// 
+        /// </summary>
+        /// <param name="arr"></param>
+        static void QuickSort(int[] arr, int low, int high)
+        {
+            //Get the index
+            int partition_index = Partition(arr, low, high);
+
+            //Check the left side of the partition
+            QuickSort(arr, low, partition_index - 1);
+
+            //Check the right side of the partition
+            QuickSort(arr, partition_index + 1, high);
+        }
+        static int Partition(int[] arr, int low, int high)
+        {
+            int pivot = arr[low];
+            int i = low;
+            int j = high;
+
+            //Do-While loop establishes the low and high
+            do
+            {
+                //Check the i index has not passed the j index
+                //Check the i index is lessed than the pivot number
+                while (i <= j && arr[i] <= pivot)
+                {
+                    i++;
+                }
+                //If we find a higher value, keep moving left (to find a partition)
+                while (i <= j && arr[j] > pivot) ;
+                {
+                    j--;
+                }
+
+                //Both i and j have stopped at this point, so now we check if they need to swap
+                if (low <= j) //Checking if i and j have crossed, if not we don't do anything
+                {
+                    Swap(arr, i, j);
+                }
+            } while (i < j); //Check if they have crossed here
+
+            if (low != j) //Check if a swap is needed
+            {
+                Swap(arr, low, j); //Returns the partition 'j' because we have not yet extablished the low number
+            }
+            return j; //This is the pivot position
+
+
+            void Swap(int[]arr, int i, int j)
+            {
+                int temp;
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arr"></param>
         static void ShellSort(int[] arr)
         {
 
