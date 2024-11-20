@@ -262,13 +262,61 @@ namespace SortingPractice
 
 
         /// <summary>
+        /// Shell sort is an extension of the insertion sort that allows the exchange of items that
+        /// are far apart, thus reducing the number of inversions in the array
+        /// 
+        /// STEPS (for ascending order)
+        /// 1. Gap is calculated by dividing the number of elements by 2
+        /// 2. Compare element after the gap
+        /// 3. Swap elements if needed
+        /// 4. Move on to the next and do a comparison of the left and right after the gap
+        /// 5. Divide the gap by 2 and repeat steps 2-4
+        /// 6. Repeat until gap < 0
+        /// 
+        /// TIME COMPLEXITY
+        /// * BEST: O(n log n)  ;  Worst: O(n^2)  ;  Average O(n^(3/2));
+        /// 
+        /// SPACE COMPLEXITY
+        /// * O(1) (in place)
+        /// 
+        /// BEST USE CASES
+        /// * Medium-sized datasets, performance is important by simplicity is a priority
+        /// 
+        /// PROS
+        /// * Faster than the insertion, bubble and selection sort on medium sized arrays
+        /// * Can be adaptive base on the gap sequence
+        /// 
+        /// CONS
+        /// * Not stable (can change the relative order of equal elements)
+        /// * Worst case performance can still be a O(n^2)
+        /// * Gap sequence heavily influences performances (different gap sequences lead to very different performances)
         /// 
         /// </summary>
         /// <param name="arr"></param>
         static void ShellSort(int[] arr)
         {
+            int gap = arr.Length / 2;
+            int i, j;
+            int temp;
 
+            while (gap > 0) //Until there is no longer a gap
+            {
+                i = gap; //i will hold the gap value
+                while (i < arr.Length) //Keep going while the gap is less than the array length
+                {
+                    temp = arr[i]; //temp holds the number in the middle
+                    j = i - gap; //j holds the number starting at index 0++ (every loop)
+                    while (j >= 0 && arr[j] > temp) //Check j is greater than 0 and arr[j] is greater than the temp (to stay in order)
+                    {
+                        arr[j + gap] = arr[j]; //Do a swap if needed (j + gap = i)
+                        j = j - gap; //Revert j to its original value
+                    }
+                    arr[j + gap] = temp; //temp is the position the number is supposed to be
+                    i++; //Continue down the array
+                }
+            }
         }
+
 
         static void MergeSort(int[] arr)
         {
