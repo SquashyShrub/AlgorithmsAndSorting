@@ -10,8 +10,6 @@ namespace SortingPractice
             int[] ints2 = { 90, 54, 32, 29, 10 };
             int[] ints3 = { 100, 60, 40, 30, 2 };
             int[] ints4 = { 78, 34, 10, 67, 54 };
-
-            
         }
 
         /// <summary>
@@ -19,7 +17,7 @@ namespace SortingPractice
         /// 
         /// STEPS (for ascending order)
         /// 1. Compare consectuive elements    (34 -- 12) 56 78 23
-        /// 2. After comparison, determin if swap is needed    (12 -- 34) 56 78 23
+        /// 2. After comparison, determine if swap is needed    (12 -- 34) 56 78 23
         /// 3. Continue comparing the next set of elements    [12 (34 -- 56) 78 23] ⇒ [12 34 (56 -- 78) 23] ⇒ [12 34 56 (78 -- 23)] ⇒ [12 34 56 23 78]
         /// 4. Repeat steps 1 - 3 until sorted
         /// 
