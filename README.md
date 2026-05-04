@@ -12,15 +12,6 @@ Developed during my **2nd Year** at Arizona State University. This project focus
 - **Frameworks/Tools**: .NET, Java SDK
 - **Environment**: Visual Studio Code
 
-### 🚀 Key Features
-- **[Feature 1]**: 
-- **[Feature 2]**: 
-- **[Feature 3]**: 
-
-### 🧠 Engineering Challenge
-**The Problem**: While developing [Feature X], I encountered an issue where [describe the bug or performance bottleneck].
-**The Solution**: I resolved this by [describe your fix, e.g., switching from a nested loop to a hash map], resulting in [describe the improvement, e.g., 40% faster execution].
-
 ### 🛠️ Installation & Usage
 1. Clone the repo: `git clone [url]`
 2. Open in VS Code or Visual Studio.
