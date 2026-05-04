@@ -11,12 +11,12 @@ namespace SortingPractice
             int[] ints3 = { 100, 60, 40, 30, 2 };
             int[] ints4 = { 78, 34, 10, 67, 54 };
 
-            SelectionSort selectionSorter = new SelectionSort();
+            MergeSort mergeSorter = new MergeSort();
             foreach(int num in ints1) {
                 System.Console.Write(num + " ");
             }
             
-            selectionSorter.sort(ints1);
+            mergeSorter.sort(ints1, 0, ints1.Length - 1);
 
             System.Console.WriteLine("Sorted array:");
             foreach (int num in ints1)
@@ -170,12 +170,6 @@ namespace SortingPractice
                     i++; //Continue down the array
                 }
             }
-        }
-
-
-        static void MergeSort(int[] arr)
-        {
-
         }
 
         #region Display Methods
